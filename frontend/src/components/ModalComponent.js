@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Fade from "@material-ui/core/Fade";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import data from "../data";
 import { makeStyles } from "@material-ui/core/styles";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -34,9 +33,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ModalComponent(props) {
   const history = useHistory();
-
+  const { id } = useParams();
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [count, setCount] = useState(0);
 
   const handleOpen = () => async () => {
     setOpen(true);
@@ -47,7 +47,7 @@ export default function ModalComponent(props) {
     history.push("/");
   };
 
-  const status = data.status.find((x) => x.id === props.match.params.id);
+  const status = data.status.find((x) => x.id === id);
   return (
     <div>
       <Modal
@@ -67,9 +67,7 @@ export default function ModalComponent(props) {
             <div className="status">
               <div className="context">
                 <h1>{status.title}</h1>
-                <p>
-                 {status.description}
-                </p>
+                <p>{status.description}</p>
               </div>
               <div className="content">
                 <div className="reaction">
@@ -122,28 +120,27 @@ export default function ModalComponent(props) {
                 </div>
 
                 <div className="comments">
-                  <div className="contComentario">
-                    <div className="comentarios">
-                      <div className="image">
-                        <img src="../img/user1.png"></img>
+                  {status.comments.map((item) => (
+                    <div className="contComentario">
+                      <div className="comentarios">
+                        <div className="image">
+                          <img src="../img/user1.png"></img>
+                        </div>
+                        <p>{item.description}</p>
                       </div>
-                      <p>
-                        {status.comments.description}
-                      </p>
+                      <ul>
+                        <li>
+                          <a>encantarme</a>
+                        </li>
+                        <li className="tex">
+                          <a>responder</a>
+                        </li>
+                      </ul>
+                      <div className="responses">
+                        <a>ver respuestas</a>
+                      </div>
                     </div>
-                    <ul>
-                      <li>
-                        <a>encantarme</a>
-                      </li>
-                      <li className="tex">
-                        <a>responder</a>
-                      </li>
-                    </ul>
-                    <div className="responses">
-                      <a>ver respuestas</a>
-                    </div>
-                  </div>
-
+                  ))}
                   <div className="comentar">
                     <div className="image">
                       <img src="../img/user1.png"></img>
