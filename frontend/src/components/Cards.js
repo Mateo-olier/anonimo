@@ -5,7 +5,6 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 
-import { makeStyles } from "@material-ui/core/styles";
 
 import { Link } from "react-router-dom";
 

@@ -11,6 +11,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import data from "../data";
 import StackGrid from "react-stack-grid";
+import Publicame from "../components/Publicame";
 
 function HomeScreen() {
   const dispatch = useDispatch();
@@ -30,10 +31,13 @@ function HomeScreen() {
       ) : (
         <div>
           <Header></Header>
+         
           <Nav></Nav>
+        
           <div className="containerCard">
+          <Publicame></Publicame>
             <StackGrid columnWidth={450} duration={100}>
-              {data.status.map((status) => (
+              {status.map((status) => (
                 <Cards key={status.id} status={status}></Cards>
               ))}
             </StackGrid>
