@@ -9,7 +9,6 @@ import Nav from "../components/Nav";
 import Cards from "../components/Cards";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import data from "../data";
 import StackGrid from "react-stack-grid";
 import Publicame from "../components/Publicame";
 
@@ -31,11 +30,11 @@ function HomeScreen() {
       ) : (
         <div>
           <Header></Header>
-         
+
           <Nav></Nav>
-        
+
           <div className="containerCard">
-          <Publicame></Publicame>
+            <Publicame></Publicame>
             <StackGrid columnWidth={450} duration={100}>
               {status.map((status) => (
                 <Cards key={status.id} status={status}></Cards>

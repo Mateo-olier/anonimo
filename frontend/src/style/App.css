@@ -52,10 +52,10 @@ header .search input {
   height: 30px;
   border: 0;
   outline: none;
-  color: #d4d6da;
+  color: #5c5c5c;
 }
 ::placeholder {
-  color: #d4d6da;
+  color: #868b97;
   font-weight: bold;
 }
 header .search input:focus {
@@ -209,6 +209,7 @@ nav ul li .active {
   width: 50%;
   height: 100%;
   margin: 10px;
+  overflow: visible;
 }
 .status .context h1 {
   color: #5dacd9;
@@ -313,25 +314,388 @@ nav ul li .active {
   background-color: #fbfcfdb3;
 }
 /*Form for public you status*/
-.formPublic {
-  width: 100%;
-  height: 100%;
-}
-.formPublic form {
-  width: 95%;
-  height: 100%;
-  margin: auto;
-  margin-top: 10px;
-}
 
-.formPublic form input {
-  width: 100%;
-}
-.formPublic form textarea {
-
-  width: 100%;
-  min-height:200px;
-  resize: horizontal;
-  overflow-y: visible;
-}
 /*Modal public*/
+.containerPublic {
+  margin: 10px;
+}
+.containerPublic input[type="text"] {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  font-size: 30px;
+  font-weight: lighter;
+  color: #555658;
+}
+.containerPublic input[type="text"]::placeholder {
+  font-weight: lighter;
+  color: #555658;
+}
+.textAr::placeholder {
+  font-weight: lighter;
+  color: #555658;
+}
+.textAr {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  margin-top: 10px;
+  outline: none;
+  border: 0;
+  color: #555658;
+}
+.containerPublic input[type="submit"] {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  margin-top: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #5aa3c4;
+  border: 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/*Login Screen*/
+.loginScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #5dacd9;
+  transition: 0.5s;
+}
+.loginScreen.active {
+  background-color: #92bcd6;
+}
+
+.containerLogin {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  margin: 20px;
+}
+.containerLogin .bg {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255, 0.2);
+  box-shadow: 0 5px 45px rgb(0, 0, 0, 0.15);
+}
+.bg .box {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bg .box h2 {
+  color: #ffffff;
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.bg .box button {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #52565b;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+}
+.formBx {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 45px rgb(0, 0, 0, 0.25);
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+}
+.formBx.active {
+  left: 50%;
+}
+.formBx .form {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  padding: 50px;
+  transition: 0.5s;
+}
+.formBx .form form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.formBx .form form h3 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.formBx .form form input {
+  margin-bottom: 20px;
+  padding: 10px;
+  outline: none;
+  font-size: 16px;
+  border: 1px solid #666;
+}
+.formBx .form form input[type="submit"] {
+  background-color: #5dacd9;
+  border: none;
+  color: #fff;
+  max-width: 100px;
+  cursor: pointer;
+}
+.formBx .form form .forgot {
+  color: #333;
+}
+.formBx.active .signinForm {
+  left: -100%;
+  transition-delay: 0s;
+}
+.formBx .signinForm {
+  transition-delay: 0.25s;
+}
+.formBx .signupForm {
+  left: 100%;
+  transition-delay: 0s;
+}
+.formBx.active .signupForm {
+  left: 0;
+  transition-delay: 0.25s;
+}
+.formBx.active .signupForm input[type="submit"] {
+  background-color: #b5b5b9;
+}
+@media (max-width: 1000px) {
+  .containerLogin {
+    max-width: 400px;
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .containerLogin .bg {
+    top: 0;
+    height: 100%;
+  }
+  .formBx {
+    width: 100%;
+    height: 500px;
+    top: 0;
+    box-shadow: none;
+  }
+  .bg .box {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    bottom: 0;
+  }
+  .box.signin {
+    top: 0;
+  }
+  .formBx.active {
+    left: 0;
+    top: 150px;
+  }
+}
+
+/*Profile screen*/
+.profileScreen {
+  width: 100%;
+  height: 100%;
+}
+.profileScreen .container {
+  width: 100%;
+}
+.profileScreen .container .navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background-color: #f6f8fc;
+  transition: 0.5s;
+  box-shadow: rgba(65, 115, 165, 0.597) 0px 8px 24px;
+}
+.navigation ul {
+  top: 0;
+  left: 0;
+  width: 100%;
+  list-style: none;
+}
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  list-style: none;
+}
+
+.navigation ul li:hover {
+  background-color: #fff;
+  transition: 0.5s;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+.profileScreen .container .main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+}
+.navigation .infoUser {
+  width: 100%;
+  background-color: #9dc9e2;
+  color: #666;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.navigation .infoUser .user {
+  width: 100%;
+  display: inline-flex;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.navigation .infoUser .user img {
+  width: 60px;
+  height: 70px;
+  margin: 5px;
+  background-color: aliceblue;
+  border-radius: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.navigation .infoUser .user h3 {
+  font-weight: normal;
+  margin-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.navigation .infoUser .contextUser ul {
+  display: flex;
+  margin: 10px;
+  padding: 0;
+}
+.navigation .infoUser .contextUser ul i {
+  font-size: 22px;
+}
+
+.container .main {
+  position: relative;
+  z-index: 10;
+  background-color: #f3f4fd;
+  width: 100%;
+  height: 100%;
+}
+.container .main::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width: 100%;
+  height: 206px;
+  background-color: #bed9e9;
+}
+
+.container .main .menuProfile {
+  width: 100%;
+  display: inline-flex;
+}
+
+.container .main .menuProfile .navStatus {
+  width: 45%;
+  margin: 20px 30px;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.container .main .menuProfile .navStatus ul {
+  list-style: none;
+  display: inline-flex;
+}
+
+.container .main .menuProfile .navStatus ul li {
+  margin: 7px;
+}
+.container .main .menuProfile .navStatus ul li a {
+  padding: 10px;
+}
+.container .main .menuProfile .navStatus ul li a:hover {
+  border-bottom: 1px solid #555658;
+}
+.container .main .menuProfile .buscProfile {
+  margin: 20px 30px;
+  margin-left: auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  
+}
+.container .main .menuProfile .buscProfile .content{
+  width: 100%;
+  display:inline-flex;
+}
+
+.container .main .menuProfile .buscProfile .content input[type="text"] {
+  padding: 5px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 200px;
+  border-radius: 10px;
+  outline: none;
+}
+.container .main .menuProfile .buscProfile .content button {
+  float: left;
+  padding: 15px;
+  color: rgb(48, 48, 48);;
+  background-color:white;  font-size: 17px;
+  border:none;
+  cursor: pointer;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+.container .main .menuProfile .buscProfile .content .btnSearch{
+  height: 100%;
+  padding-top:10px;
+}
+.container .main .menuProfile .buscProfile .content input[type="text"]::placeholder {
+  color: rgb(48, 48, 48);
+  font-weight: lighter;
+}
+
+.container .main .containerCardProfile{
+  
+  margin-top: 150px;
+  
+}

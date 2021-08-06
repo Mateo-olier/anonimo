@@ -6,6 +6,8 @@ import Fade from "@material-ui/core/Fade";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
+import { Scrollbars } from 'react-custom-scrollbars';
+
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
@@ -84,7 +86,9 @@ export default function ModalComponent(props) {
               <div className="status">
                 <div className="context">
                   <h1>{status.title}</h1>
-                  <p>{status.description}</p>
+                  <Scrollbars style={{ width: '100%', height: 400 }}>
+                    <p>{status.description}</p>
+                  </Scrollbars>
                 </div>
                 <div className="content">
                   <div className="reaction">
@@ -158,15 +162,14 @@ export default function ModalComponent(props) {
                         </div>
                       </div>
                     ))}
-                   
-                </div>
-                 <div className="comentar">
-                      <div className="image">
-                        <img src="../img/user1.png"></img>
-                      </div>
-                      <input placeholder="Write comments..."></input>
-                    </div>
                   </div>
+                  <div className="comentar">
+                    <div className="image">
+                      <img src="../img/user1.png"></img>
+                    </div>
+                    <input placeholder="Write comments..."></input>
+                  </div>
+                </div>
               </div>
             </div>
           </Fade>

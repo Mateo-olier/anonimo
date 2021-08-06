@@ -5,6 +5,7 @@ import Fade from "@material-ui/core/Fade";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
+import TextareaAutosize from "@material-ui/core/TextareaAutosize";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -16,8 +17,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    width: "40%",
-    height: "80%",
+    width: "50%",
+    minHeight: "30%",
+    resize: "vertical",
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     "&:focus": {
@@ -25,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
 export default function ModalPublic() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -54,12 +55,19 @@ export default function ModalPublic() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-              <div className="formPublic">
+            <div className="containerPublic">
               <form>
-                  <input placeholder="Titulo"/>
-                  <textarea placeholder="Descr"/>
-                  <input type="submit" value="Submit"/>              </form>
-              </div>
+                <input type="text" placeholder="Título" />
+                <TextareaAutosize
+                  rows={10}
+                  rowsMax={20}
+                  aria-label="maximum height"
+                  placeholder="Desahoga esa mente"
+                  className="textAr"
+                />
+                <input type="submit" value="Publicar" />
+              </form>
+            </div>
           </div>
         </Fade>
       </Modal>
