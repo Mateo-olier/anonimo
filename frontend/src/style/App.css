@@ -570,16 +570,17 @@ nav ul li .active {
 }
 .navigation .infoUser {
   width: 100%;
-  background-color: #9dc9e2;
+  background-color: #f3f7fa;
   color: #666;
   padding-top: 20px;
   padding-bottom: 20px;
+  text-align: center;
+
+
 }
 .navigation .infoUser .user {
   width: 100%;
-  display: inline-flex;
-  margin-top: 20px;
-  margin-left: 30px;
+  margin: 0 auto;
 }
 .navigation .infoUser .user img {
   width: 60px;
@@ -658,11 +659,10 @@ nav ul li .active {
   background-color: white;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  
 }
-.container .main .menuProfile .buscProfile .content{
+.container .main .menuProfile .buscProfile .content {
   width: 100%;
-  display:inline-flex;
+  display: inline-flex;
 }
 
 .container .main .menuProfile .buscProfile .content input[type="text"] {
@@ -677,25 +677,28 @@ nav ul li .active {
 .container .main .menuProfile .buscProfile .content button {
   float: left;
   padding: 15px;
-  color: rgb(48, 48, 48);;
-  background-color:white;  font-size: 17px;
-  border:none;
+  color: rgb(48, 48, 48);
+  background-color: white;
+  font-size: 17px;
+  border: none;
   cursor: pointer;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-
 }
-.container .main .menuProfile .buscProfile .content .btnSearch{
+.container .main .menuProfile .buscProfile .content .btnSearch {
   height: 100%;
-  padding-top:10px;
+  padding-top: 10px;
 }
-.container .main .menuProfile .buscProfile .content input[type="text"]::placeholder {
+.container
+  .main
+  .menuProfile
+  .buscProfile
+  .content
+  input[type="text"]::placeholder {
   color: rgb(48, 48, 48);
   font-weight: lighter;
 }
 
-.container .main .containerCardProfile{
-  
+.container .main .containerCardProfile {
   margin-top: 150px;
-  
 }
