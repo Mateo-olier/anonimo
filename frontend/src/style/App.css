@@ -10,7 +10,7 @@ body {
 }
 header {
   width: 100%;
-  height: 50px;
+  height: 60px;
   background-color: #fff;
   padding: 10px;
   overflow: hidden;
@@ -27,8 +27,8 @@ header ul .logo {
   margin-left: 20px;
 }
 header ul .logo a img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 50px;
 }
 
 header ul .search {
@@ -36,7 +36,7 @@ header ul .search {
   margin-bottom: auto;
   margin-left: 20px;
   display: flex;
-  width: 78%;
+  width: 75%;
   background-color: #ffffff;
 }
 header ul .search a {
@@ -575,8 +575,6 @@ nav ul li .active {
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
-
-
 }
 .navigation .infoUser .user {
   width: 100%;
@@ -701,4 +699,52 @@ nav ul li .active {
 
 .container .main .containerCardProfile {
   margin-top: 150px;
+}
+.containerCenter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.containerCenter h1 {
+  margin: 0;
+  font-weight: lighter;
+  font-size: 50px;
+  font-style: italic;
+  color: #5f5f5f;
+}
+
+.line {
+  position: relative;
+  top: 50%;
+  width: 16em;
+  margin: 0 auto;
+  border-right: 2px solid #5f5f5f;
+  font-size: 180%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+}
+.anim-typewriter {
+  animation: typewriter 4s steps(36) 1s 1 normal both,
+    blinkTextCursor 500ms steps(36) infinite normal;
+}
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 16em;
+  }
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: #5f5f5f;
+  }
+  to {
+    border-right-color: transparent;
+  }
 }

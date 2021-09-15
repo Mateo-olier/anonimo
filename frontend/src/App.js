@@ -6,6 +6,7 @@ import ProfileScreen from "./screen/ProfileScreen";
 import ModalComponent from "./components/ModalComponent";
 import ModalPublic from "./components/ModalPublic";
 import { Switch } from "@material-ui/core";
+import LoadingBox from "./components/LoadingBox";
 function App() {
   return (
     <BrowserRouter>
@@ -18,7 +19,7 @@ function App() {
       <Route path="/profile/:id">
         <ProfileScreen></ProfileScreen>
       </Route>
-      
+      <Route path="/load" component={LoadingBox} exact></Route>
     </BrowserRouter>
   );
 }

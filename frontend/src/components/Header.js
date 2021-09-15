@@ -1,25 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "../style/App.css";
-import logo from '../logo.png'
 
 function Header() {
   return (
     <div className="container">
       <header>
         <ul>
-          <li className="icono">Icono</li>
+          {/* 
+            <li className="icono">Icono</li>
+          */}
           <li className="logo">
-            <a><img src={logo}></img></a>
+            <Link to="/">
+              {" "}
+              <img src='1.png'></img>{" "}
+            </Link>
           </li>
           <li className="search">
             <a href="">
-             <i> <FontAwesomeIcon
-                icon={faSearch}
-                className="text-black"
-                size="2x"
-              /></i>
+              <i>
+                {" "}
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  className="text-black"
+                  size="2x"
+                />
+              </i>
             </a>
             <input placeholder="Buscar"></input>
           </li>
