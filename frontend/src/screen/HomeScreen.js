@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -14,17 +14,28 @@ import Publicame from "../components/Publicame";
 
 function HomeScreen() {
   const dispatch = useDispatch();
+  const [time,setTime] = useState(true);
   const statusList = useSelector((state) => state.statusList);
   const { loading, error, status } = statusList;
 
+
+  //El timer dejalo por si aca da la idea de la otra forma
   useEffect(() => {
+    const timer = setTimeout(()=>{
+      setTime(false)
+    },4000);
     dispatch(listStatus());
+    return () =>{
+      clearTimeout(timer);
+    }
+
+
   }, [dispatch]);
 
   return (
     <div>
       {loading ? (
-        <LoadingBox></LoadingBox>
+        <Fragment/>
       ) : error ? (
         <MessageBox>{error}</MessageBox>
       ) : (
