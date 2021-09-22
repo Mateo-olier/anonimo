@@ -5,7 +5,7 @@ export default function LoadingBox() {
     <div>
       <div className="containerCenter">
         <img src='logo.png' />
-        <h1 className="line anim-typewriter">Aquí el caos, no te JODE!</h1>
+        <h1 className="line anim-typewriter">Que el caos no te INVADA</h1>
       </div>
     </div>
   );

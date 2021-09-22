@@ -5,10 +5,10 @@ export default function FormPublic() {
   return (
     <div>
       <div className="BottonPublic">
-          <Link to='/publicStatus' className="buttonPublic">¿Desahoga esa mente HPTA?'
-          </Link>
+        <Link to="/publicStatus" className="buttonPublic">
+          ¿Desahoga esa mente?'
+        </Link>
       </div>
-
     </div>
   );
 }

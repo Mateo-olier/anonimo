@@ -4,22 +4,32 @@ import { useSelector, useDispatch } from "react-redux";
 
 import Header from "../components/Header";
 import Cards from "../components/Cards";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import StackGrid from "react-stack-grid";
 
 import { listStatus } from "../actions/StatusActions";
 import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
-import StackGrid from "react-stack-grid";
-import Publicame from "../components/Publicame";
+
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProfileScreen() {
   const dispatch = useDispatch();
   const statusList = useSelector((state) => state.statusList);
   const { loading, error, status } = statusList;
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   useEffect(() => {
     dispatch(listStatus());
@@ -32,95 +42,71 @@ export default function ProfileScreen() {
       ) : error ? (
         <MessageBox>{error}</MessageBox>
       ) : (
-        <div className="profileScreen">
-          {/* <Header></Header> hacer header para profile  */}
-          <div className="container">
-            <div className="navigation">
-              <div className="infoUser">
-                <div className="user">
-                  <img src="../img/perfil.jpg" />
-                  <h3>Olier1</h3>
-                </div>
-                <div className="contextUser">
-                  <ul>
-                    <li>
-                      <i>
-                        <FontAwesomeIcon
-                          icon={faStar}
-                          className="text-black"
-                          size="1x"
-                        />
-                      </i>
-                      1,000
-                    </li>
-                    <li>
-                      <i>
-                        <FontAwesomeIcon
-                          icon={faUser}
-                          className="text-black"
-                          size="1x"
-                        />
-                      </i>
-                      1,000
-                    </li>
-                  </ul>
-                </div>
+        <>
+          <Header></Header>
+          <div className="containerCenter">
+            <div className="profile">
+              <div className="image">
+                <img src="../img/perfil.jpg" />
               </div>
+              <div className="contexto">
+                <h2>
+                  Anonimo Olier
+                  <Button
+                    id="basic-button"
+                    aria-controls="basic-menu"
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                  >
+                    <FontAwesomeIcon
+                      icon={faChevronDown}
+                      className="text-black"
+                      size="1x"
+                    />
+                  </Button>
+                  <Menu
+                    style={{ position: "absolute" }}
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <MenuItem onClick={handleClose}>Personaje1</MenuItem>
+                    <MenuItem onClick={handleClose}>Personaje2</MenuItem>
+                    <MenuItem onClick={handleClose}>Personaje3</MenuItem>
+                  </Menu>
+                </h2>
+
+                <span>9 seguidores</span>
+                <span>10 seguidos</span>
+              </div>
+            </div>
+            <div className="navStatus">
               <ul>
-                <h4>Personajes</h4>
                 <li>
-                  <a>personaje1</a>
+                  <a>Todos</a>
                 </li>
                 <li>
-                  <a>personaje2</a>
+                  <a>Guardados</a>
                 </li>
                 <li>
-                  <a>personaje3</a>
+                  <a>Comentados</a>
                 </li>
               </ul>
             </div>
-            <div className="main">
-              <div className="menuProfile">
-                <div className="navStatus">
-                  <ul>
-                    <li>
-                      <a>Todos</a>
-                    </li>
-                    <li>
-                      <a>Guardados</a>
-                    </li>
-                    <li>
-                      <a>Comentados</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="buscProfile">
-                  <form className="content">
-                    <input type="text" placeholder="Search" />
-                    <button>
-                      <i>
-                        <FontAwesomeIcon
-                          icon={faSearch}
-                          className="text-black"
-                          size="2x"
-                        />
-                      </i>
-                    </button>
-                  </form>
-                </div>
-              </div>
-              <div class="containerCardProfile">
-                <div className="containerCard">
-                  <StackGrid columnWidth={450} duration={100}>
-                    {status.map((status) => (
-                      <Cards key={status.id} status={status}></Cards>
-                    ))}
-                  </StackGrid>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
+          <div className="containerCard">
+            <StackGrid columnWidth={450} duration={100}>
+              {status.map((status) => (
+                <Cards key={status.id} status={status}></Cards>
+              ))}
+            </StackGrid>
+          </div>
+        </>
       )}
     </div>
   );

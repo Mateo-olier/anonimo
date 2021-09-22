@@ -14,6 +14,8 @@ header {
   background-color: #fff;
   padding: 10px;
   overflow: hidden;
+  position: fixed;
+  z-index: 10000;
 }
 header ul {
   margin: 0;
@@ -84,6 +86,7 @@ nav {
   height: 100%;
   background-color: #f6f8fc;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding-top: 90px;
 }
 nav ul {
   margin: 0;
@@ -106,6 +109,55 @@ nav ul li a {
 nav ul li .active {
   color: #5dacd9;
 }
+/*LoadingComponent*/
+.containerCenter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.containerCenter h1 {
+  margin: 0;
+  font-weight: lighter;
+  font-size: 50px;
+  font-style: italic;
+  color: #5f5f5f;
+}
+
+.line {
+  position: relative;
+  top: 50%;
+  width: 16em;
+  margin: 0 auto;
+  border-right: 2px solid #5f5f5f;
+  font-size: 180%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+}
+.anim-typewriter {
+  animation: typewriter 4s steps(36) 1s 1 normal both,
+    blinkTextCursor 500ms steps(36) infinite normal;
+}
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 16em;
+  }
+}
+
+@keyframes blinkTextCursor {
+  from {
+    border-right-color: #5f5f5f;
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
 
 /*Cards*/
 
@@ -113,6 +165,7 @@ nav ul li .active {
   margin: 20px;
   background-color: #fff;
   height: 100%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
 .card .user {
@@ -169,7 +222,7 @@ nav ul li .active {
   color: #52565b;
 }
 .containerCard {
-  background-color: #f3f4fd;
+  background-color: #fff;
 }
 .comments {
   display: flex;
@@ -287,6 +340,7 @@ nav ul li .active {
   text-align: center;
   margin-top: 10px;
 }
+
 /*Botton for Modal function public*/
 .BottonPublic {
   width: 100%;
@@ -523,112 +577,31 @@ nav ul li .active {
 }
 
 /*Profile screen*/
-.profileScreen {
-  width: 100%;
-  height: 100%;
+.profile {
+  margin-top: 100px;
 }
-.profileScreen .container {
-  width: 100%;
-}
-.profileScreen .container .navigation {
-  position: fixed;
-  width: 300px;
-  height: 100%;
-  background-color: #f6f8fc;
-  transition: 0.5s;
-  box-shadow: rgba(65, 115, 165, 0.597) 0px 8px 24px;
-}
-.navigation ul {
-  top: 0;
-  left: 0;
-  width: 100%;
-  list-style: none;
-}
-.navigation ul li {
-  position: relative;
-  width: 100%;
-  padding: 10px;
-  list-style: none;
+.profile .image {
+  width: 350px;
+  height: 350px;
 }
 
-.navigation ul li:hover {
-  background-color: #fff;
-  transition: 0.5s;
-}
-
-.navigation ul li a {
-  position: relative;
-  display: block;
+.profile .image img {
   width: 100%;
-  padding: 10px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
-.profileScreen .container .main {
-  position: absolute;
-  width: calc(100% - 300px);
-  left: 300px;
-  min-height: 100vh;
-}
-.navigation .infoUser {
-  width: 100%;
-  background-color: #f3f7fa;
-  color: #666;
-  padding-top: 20px;
-  padding-bottom: 20px;
+.profile .contexto {
   text-align: center;
 }
-.navigation .infoUser .user {
-  width: 100%;
-  margin: 0 auto;
+.profile .contexto h2 {
+  font-weight: lighter;
+  color: #000;
 }
-.navigation .infoUser .user img {
-  width: 60px;
-  height: 70px;
+.profile .contexto span {
   margin: 5px;
-  background-color: aliceblue;
-  border-radius: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
-.navigation .infoUser .user h3 {
-  font-weight: normal;
-  margin-left: 10px;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-.navigation .infoUser .contextUser ul {
-  display: flex;
-  margin: 10px;
-  padding: 0;
-}
-.navigation .infoUser .contextUser ul i {
-  font-size: 22px;
-}
-
-.container .main {
-  position: relative;
-  z-index: 10;
-  background-color: #f3f4fd;
-  width: 100%;
-  height: 100%;
-}
-.container .main::before {
-  content: "";
-
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  width: 100%;
-  height: 206px;
-  background-color: #bed9e9;
-}
-
-.container .main .menuProfile {
-  width: 100%;
-  display: inline-flex;
-}
-
-.container .main .menuProfile .navStatus {
+.navStatus {
   width: 45%;
   margin: 20px 30px;
   text-align: center;
@@ -637,114 +610,16 @@ nav ul li .active {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.container .main .menuProfile .navStatus ul {
+.navStatus ul {
   list-style: none;
   display: inline-flex;
 }
-
-.container .main .menuProfile .navStatus ul li {
+.navStatus ul li {
   margin: 7px;
 }
-.container .main .menuProfile .navStatus ul li a {
+.navStatus ul li a {
   padding: 10px;
 }
-.container .main .menuProfile .navStatus ul li a:hover {
+.navStatus ul li a:hover {
   border-bottom: 1px solid #555658;
-}
-.container .main .menuProfile .buscProfile {
-  margin: 20px 30px;
-  margin-left: auto;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.container .main .menuProfile .buscProfile .content {
-  width: 100%;
-  display: inline-flex;
-}
-
-.container .main .menuProfile .buscProfile .content input[type="text"] {
-  padding: 5px;
-  font-size: 17px;
-  border: none;
-  float: left;
-  width: 200px;
-  border-radius: 10px;
-  outline: none;
-}
-.container .main .menuProfile .buscProfile .content button {
-  float: left;
-  padding: 15px;
-  color: rgb(48, 48, 48);
-  background-color: white;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-.container .main .menuProfile .buscProfile .content .btnSearch {
-  height: 100%;
-  padding-top: 10px;
-}
-.container
-  .main
-  .menuProfile
-  .buscProfile
-  .content
-  input[type="text"]::placeholder {
-  color: rgb(48, 48, 48);
-  font-weight: lighter;
-}
-
-.container .main .containerCardProfile {
-  margin-top: 150px;
-}
-.containerCenter {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.containerCenter h1 {
-  margin: 0;
-  font-weight: lighter;
-  font-size: 50px;
-  font-style: italic;
-  color: #5f5f5f;
-}
-
-.line {
-  position: relative;
-  top: 50%;
-  width: 16em;
-  margin: 0 auto;
-  border-right: 2px solid #5f5f5f;
-  font-size: 180%;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  transform: translateY(-50%);
-}
-.anim-typewriter {
-  animation: typewriter 4s steps(36) 1s 1 normal both,
-    blinkTextCursor 500ms steps(36) infinite normal;
-}
-@keyframes typewriter {
-  from {
-    width: 0;
-  }
-  to {
-    width: 16em;
-  }
-}
-
-@keyframes blinkTextCursor {
-  from {
-    border-right-color: #5f5f5f;
-  }
-  to {
-    border-right-color: transparent;
-  }
 }

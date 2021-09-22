@@ -15,7 +15,7 @@ function Header() {
           <li className="logo">
             <Link to="/">
               {" "}
-              <img src='1.png'></img>{" "}
+              <img src='../img/1.png'/>
             </Link>
           </li>
           <li className="search">
